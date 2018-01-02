@@ -1,0 +1,39 @@
+version: "3.4"
+
+services:
+  traefik:
+    image: traefik
+    command: "-c /etc/traefik.toml"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    configs:
+      - source: traefik_config
+        target: /etc/traefik.toml
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 50M
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:rw"
+      - acme-data:/acme
+    networks:
+      - proxy-net
+
+configs:
+  traefik_config:
+    file: ./traefik.toml
+
+volumes:
+  acme-data:
+
+networks:
+  proxy-net:
+    external:
+      name: proxy-net
+
