@@ -23,3 +23,5 @@ email = "sorend@gmail.com"
 storage = "/acme/acme.json"
 entryPoint = "https"
 onHostRule = true
+	[acme.httpChallenge]
+	entryPoint = "http"
