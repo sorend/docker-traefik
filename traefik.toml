@@ -12,7 +12,6 @@ address = ":8080"
 # Enable Docker configuration backend.
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "s.dnam.dk"
 watch = true
 swarmmode = true
 exposedbydefault = false

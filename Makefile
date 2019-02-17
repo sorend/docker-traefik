@@ -11,6 +11,6 @@ clean:
 
 network:
 	if ! docker network ls | grep proxy-net; then \
-		docker network create --attacheable -d overlay proxy-net; \
+		docker network create --attachable -d overlay proxy-net; \
 	fi
 
